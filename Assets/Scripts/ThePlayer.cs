@@ -11,7 +11,7 @@ public class ThePlayer : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update()

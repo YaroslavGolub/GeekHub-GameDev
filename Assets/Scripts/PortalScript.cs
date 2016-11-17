@@ -4,8 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class PortalScript : MonoBehaviour
 {
-    private readonly Color32 initialColor = Color.gray;
-    private readonly Color32 colorToLerp = Color.green;
+    public bool mooving = true;
+    public string sceneToLoad;
+
+    public Color32 initialColor = Color.gray;
+    public Color32 colorToLerp = Color.green;
 
     private Renderer theRenderer;
 
@@ -29,8 +32,8 @@ public class PortalScript : MonoBehaviour
 
     private void Update()
     {
-
-        transform.position = startPosition + new Vector3(0, Mathf.Sin(Time.time), 0);
+        if(mooving)
+            transform.position = startPosition + new Vector3(0, Mathf.Sin(Time.time), 0);
 
         if(player==null)
             return;
@@ -44,7 +47,7 @@ public class PortalScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("nextScene");
+            SceneManager.LoadScene(sceneToLoad);
         }
     }
 }

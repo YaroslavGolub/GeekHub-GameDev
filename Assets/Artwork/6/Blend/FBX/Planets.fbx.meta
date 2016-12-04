@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 56de6654c6b7e084ead9bbf8bbc350ec
-timeCreated: 1480636931
+guid: 153434df08b792e48ad5a4073312d384
+timeCreated: 1480808688
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -8,75 +8,79 @@ ModelImporter:
     100000: Earth
     100002: Jupiter
     100004: Mars
-    100006: Mercuri
+    100006: Mercury
     100008: Moon
-    100010: Neptune
+    100010: Neptun
     100012: //RootNode
     100014: Pluto
     100016: Saturn
     100018: SaturnCircle
     100020: Sun
-    100022: UranCircleBot
-    100024: UranCircleTop
-    100026: Uranus
-    100028: Venus
+    100022: Sun.001
+    100024: Sun.002
+    100026: Uran
+    100028: UranCircle
+    100030: UranCircleTop
+    100032: Venus
     400000: Earth
     400002: Jupiter
     400004: Mars
-    400006: Mercuri
+    400006: Mercury
     400008: Moon
-    400010: Neptune
+    400010: Neptun
     400012: //RootNode
     400014: Pluto
     400016: Saturn
     400018: SaturnCircle
     400020: Sun
-    400022: UranCircleBot
-    400024: UranCircleTop
-    400026: Uranus
-    400028: Venus
+    400022: Sun.001
+    400024: Sun.002
+    400026: Uran
+    400028: UranCircle
+    400030: UranCircleTop
+    400032: Venus
     2300000: Earth
     2300002: Jupiter
     2300004: Mars
-    2300006: Mercuri
+    2300006: Mercury
     2300008: Moon
-    2300010: Neptune
+    2300010: Neptun
     2300012: Pluto
     2300014: Saturn
     2300016: SaturnCircle
     2300018: Sun
-    2300020: UranCircleBot
-    2300022: UranCircleTop
-    2300024: Uranus
+    2300020: Uran
+    2300022: UranCircle
+    2300024: UranCircleTop
     2300026: Venus
     3300000: Earth
     3300002: Jupiter
     3300004: Mars
-    3300006: Mercuri
+    3300006: Mercury
     3300008: Moon
-    3300010: Neptune
+    3300010: Neptun
     3300012: Pluto
     3300014: Saturn
     3300016: SaturnCircle
     3300018: Sun
-    3300020: UranCircleBot
-    3300022: UranCircleTop
-    3300024: Uranus
+    3300020: Uran
+    3300022: UranCircle
+    3300024: UranCircleTop
     3300026: Venus
     4300000: Moon
-    4300002: Uranus
-    4300004: UranCircleBot
-    4300006: UranCircleTop
-    4300008: Sun
-    4300010: Saturn
-    4300012: SaturnCircle
-    4300014: Mercuri
-    4300016: Venus
+    4300002: Pluto
+    4300004: Neptun
+    4300006: Uran
+    4300008: UranCircle
+    4300010: UranCircleTop
+    4300012: Saturn
+    4300014: SaturnCircle
+    4300016: Jupiter
     4300018: Mars
-    4300020: Neptune
-    4300022: Jupiter
-    4300024: Earth
-    4300026: Pluto
+    4300020: Earth
+    4300022: Mercury
+    4300024: Venus
+    4300026: Sun
   materials:
     importMaterials: 1
     materialName: 0
@@ -123,6 +127,7 @@ ModelImporter:
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -133,7 +138,10 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 0
   humanoidOversampling: 1

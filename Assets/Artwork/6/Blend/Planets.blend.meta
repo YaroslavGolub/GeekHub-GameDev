@@ -23,6 +23,10 @@ ModelImporter:
     100030: Plane_001
     100032: UranCircleBot
     100034: UranCircleTop
+    100036: Mercury
+    100038: Neptun
+    100040: Uran
+    100042: UranCircle
     400000: Earth
     400002: Jupiter
     400004: Mars
@@ -41,6 +45,10 @@ ModelImporter:
     400030: Plane_001
     400032: UranCircleBot
     400034: UranCircleTop
+    400036: Mercury
+    400038: Neptun
+    400040: Uran
+    400042: UranCircle
     2300000: Earth
     2300002: Jupiter
     2300004: Mars
@@ -58,6 +66,10 @@ ModelImporter:
     2300028: Plane_001
     2300030: UranCircleBot
     2300032: UranCircleTop
+    2300034: Mercury
+    2300036: Neptun
+    2300038: Uran
+    2300040: UranCircle
     3300000: Earth
     3300002: Jupiter
     3300004: Mars
@@ -75,6 +87,10 @@ ModelImporter:
     3300028: Plane_001
     3300030: UranCircleBot
     3300032: UranCircleTop
+    3300034: Mercury
+    3300036: Neptun
+    3300038: Uran
+    3300040: UranCircle
     4300000: Moon
     4300002: Uranus
     4300004: uranusCircle
@@ -92,6 +108,10 @@ ModelImporter:
     4300028: Plane
     4300030: UranCircleBot
     4300032: UranCircleTop
+    4300034: Neptun
+    4300036: Uran
+    4300038: UranCircle
+    4300040: Mercury
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -140,6 +160,7 @@ ModelImporter:
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -150,7 +171,10 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1

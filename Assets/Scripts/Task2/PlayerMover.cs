@@ -13,7 +13,7 @@ namespace Assets.Scripts.Task2
 
         private void Start()
         {
-            DontDestroyOnLoad(this.gameObject);
+           // DontDestroyOnLoad(this.gameObject);
         }
 
         private void Update()
@@ -24,7 +24,7 @@ namespace Assets.Scripts.Task2
         private void Move()
         {
             _moveDirection.z = Input.GetAxis("Vertical") * PlayerSpeed * Time.deltaTime;
-            _rotation = Input.GetAxis("Horizontal");
+            _rotation = Input.GetAxis("Horizontal") * PlayerSpeed/2 ;
 
             transform.Translate(_moveDirection);
             transform.Rotate(0, _rotation, 0);

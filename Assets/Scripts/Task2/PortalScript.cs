@@ -6,6 +6,8 @@ namespace Assets.Scripts.Task2
 
     public class PortalScript : MonoBehaviour
     {
+        public string SceneToLoad;
+
         private readonly Color32 _initialColor = Color.gray;
         private readonly Color32 _colorToLerp = Color.green;
 
@@ -45,7 +47,7 @@ namespace Assets.Scripts.Task2
         {
             if (other.CompareTag("Player"))
             {
-                SceneManager.LoadScene("nextScene");
+                SceneManager.LoadScene(SceneToLoad);
             }
         }
     }

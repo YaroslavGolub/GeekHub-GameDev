@@ -27,6 +27,9 @@ ModelImporter:
     100038: Neptun
     100040: Uran
     100042: UranCircle
+    100044: Circle
+    100046: Saturn_001
+    100048: Saturn_002
     400000: Earth
     400002: Jupiter
     400004: Mars
@@ -49,6 +52,9 @@ ModelImporter:
     400038: Neptun
     400040: Uran
     400042: UranCircle
+    400044: Circle
+    400046: Saturn_001
+    400048: Saturn_002
     2300000: Earth
     2300002: Jupiter
     2300004: Mars
@@ -70,6 +76,9 @@ ModelImporter:
     2300036: Neptun
     2300038: Uran
     2300040: UranCircle
+    2300042: Circle
+    2300044: Saturn_001
+    2300046: Saturn_002
     3300000: Earth
     3300002: Jupiter
     3300004: Mars
@@ -91,6 +100,9 @@ ModelImporter:
     3300036: Neptun
     3300038: Uran
     3300040: UranCircle
+    3300042: Circle
+    3300044: Saturn_001
+    3300046: Saturn_002
     4300000: Moon
     4300002: Uranus
     4300004: uranusCircle
@@ -112,6 +124,9 @@ ModelImporter:
     4300036: Uran
     4300038: UranCircle
     4300040: Mercury
+    4300042: Circle
+    4300044: Saturn_001
+    4300046: Saturn_002
     7400000: Default Take
     9500000: //RootNode
   materials:

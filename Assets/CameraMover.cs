@@ -3,22 +3,21 @@
 public class CameraMover : MonoBehaviour
 {
     public GameObject defaultWaypoint;
-    private float angleOfRotation = 1 / 360f;
+    public PlanetSatellite currentWaypoint;
+    
     public float rotationSpeed = 2;
-    public LayerMask layermask;
-    public Vector3 startPosition;
-    public Quaternion startRotaion;
-    public bool animEnded;
+
+    public LayerMask layermask;    
+    
+    
     private bool transitionFrame = false;
-
-
+    private bool defaultPos = true;
     private Vector3 desiredPosition;
     private Quaternion desiredRotation;
 
     void Start()
     {
-        startPosition = transform.position;
-        startRotaion = transform.rotation;
+        
     }
 
 
@@ -48,31 +47,45 @@ public class CameraMover : MonoBehaviour
             if (clickedGmObj != null)
             {
                 Debug.Log(clickedGmObj.name);
-                defaultWaypoint = clickedGmObj;
+                currentWaypoint = clickedGmObj.GetComponent<PlanetSatellite>();
+
+                currentWaypoint.watching = true;
             }
             else
             {
                 Debug.Log("click failed");
             }
             //display = true;
-            transform.Translate(defaultWaypoint.transform.position);
+            
         }
 
-        transform.RotateAround(defaultWaypoint.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
+        if (Input.GetMouseButtonDown(1))
+        {
+            currentWaypoint.watching = false;
+            // TODO: Hide Calendar
+            currentWaypoint = null;
+        }
+
+        defaultPos = currentWaypoint == null;
+
+       // transform.RotateAround(defaultWaypoint.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
 
         transitionFrame = false;
     }
 
-    public void StartMoving()
-    {
-        animEnded = true;
-        Debug.Log(animEnded);
-    }
-
     private void MoveCamera()
     {
+        if (!defaultPos)
+        {
 
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime);
-        transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, Time.deltaTime);
+
+            transform.position = Vector3.Lerp(transform.position, currentWaypoint.Waypoint.position, Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, currentWaypoint.Waypoint.rotation, Time.deltaTime);
+        }
+        else
+        {
+            transform.position = Vector3.Lerp(transform.position, defaultWaypoint.transform.position, Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, defaultWaypoint.transform.rotation, Time.deltaTime);
+        }
     }
 }

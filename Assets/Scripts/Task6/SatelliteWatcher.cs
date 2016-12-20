@@ -15,9 +15,9 @@ public class SatelliteWatcher : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        transform.LookAt(planet.transform.position);
-        transform.RotateAround(planet.transform.position, Vector3.down, Time.deltaTime + speed);
-    }
+    //void Update()
+    //{
+    //    transform.LookAt(planet.transform.position);
+    //    transform.RotateAround(planet.transform.position, Vector3.down, Time.deltaTime + speed);
+    //}
 }

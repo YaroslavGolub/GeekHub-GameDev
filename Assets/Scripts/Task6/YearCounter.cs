@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class YearCounter : MonoBehaviour {
 
-	int year = 0;
+	int _year = 0;
 
 	public void CountYear()
 	{
-		year++;
+		_year++;
 	}
 
 	public int GetCurrentYear()
 	{
-		return year;
+		return _year;
 	}
 }

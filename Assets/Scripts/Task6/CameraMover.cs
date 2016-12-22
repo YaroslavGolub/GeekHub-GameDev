@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Task6
 {
@@ -6,20 +7,29 @@ namespace Assets.Scripts.Task6
     {
         public GameObject DefaultWaypoint;
         public PlanetSatellite CurrentWaypoint;
-    
+        public SatelliteWatcher StWatcher;
+
         public float RotationSpeed = 2;
 
         public LayerMask LMask;
 
         public GameObject InfoPanel;
-    
-        private bool _transitionFrame = false;
+        public GameObject orbits;
+
+        public float zoomValue;
+        public Scrollbar ThScrollbar;
+
+        private bool canZoom;
         private bool _defaultPos = true;
+        private Vector3 pos;
 
         private void Start()
         {
             InfoPanel.SetActive(false);
+            ThScrollbar.transform.parent.gameObject.SetActive(false);
+            orbits.SetActive(true);
         }
+
         private GameObject GetClickedGameObject()
         {
             // Builds a ray from camera point of view to the mouse position
@@ -32,57 +42,66 @@ namespace Assets.Scripts.Task6
                 return null;
         }
 
-
-        void Update()
+        private void Update()
         {
-
-            MoveCamera();
-
-            if (Input.GetMouseButtonDown(0) && !_transitionFrame)
+            if (Input.GetMouseButtonDown(0))
             {
-                if (CurrentWaypoint != null)
-                {
-                    CurrentWaypoint.Watching = false;
-                    CurrentWaypoint = null;
-                    InfoPanel.SetActive(false);
-                }
-
                 var clickedGmObj = GetClickedGameObject();
+
                 if (clickedGmObj != null)
                 {
                     Debug.Log(clickedGmObj.name);
-                    CurrentWaypoint = clickedGmObj.GetComponent<PlanetSatellite>();
-
-                    CurrentWaypoint.Watching = true;
-                    InfoPanel.SetActive(true);
+                    ChangeCurrentWaypoint(clickedGmObj.GetComponent<PlanetSatellite>());
                 }
                 else
                 {
                     Debug.Log("click failed");
                 }
-           
-            
             }
 
-            if (Input.GetMouseButtonDown(1) && CurrentWaypoint !=null)
+            // Returns to the default waypoint.position
+            if (Input.GetMouseButtonDown(1))
             {
-                CurrentWaypoint.Watching = false;
-                InfoPanel.SetActive(false);
-                // TODO: Hide Calendar
-                CurrentWaypoint = null;
+                ClearWaypointData();
             }
 
             _defaultPos = CurrentWaypoint == null;
 
-            _transitionFrame = false;
+            if (canZoom)
+            {
+                ThScrollbar.transform.parent.gameObject.SetActive(!InfoPanel.activeInHierarchy);
+                orbits.SetActive(!InfoPanel.activeInHierarchy);
+                StWatcher.ZoomIn(ThScrollbar.value);
+            }
+
+            MoveCamera();
+        }
+        public void ChangeCurrentWaypoint(PlanetSatellite waypoint)
+        {
+            if (CurrentWaypoint != null)
+                ClearWaypointData();
+            // if true updates current day/year info
+            CurrentWaypoint = waypoint;
+
+            CurrentWaypoint.Watching = true;
+            InfoPanel.SetActive(true);
+        }
+
+        // Clears current waypoint beore reach next
+        private void ClearWaypointData()
+        {
+            if (CurrentWaypoint != null)
+            {
+                CurrentWaypoint.Watching = false;
+                CurrentWaypoint = null;
+                InfoPanel.SetActive(false);
+            }
         }
 
         private void MoveCamera()
         {
             if (!_defaultPos)
             {
-
-
                 transform.position = Vector3.Lerp(transform.position, CurrentWaypoint.Waypoint.position, Time.deltaTime);
                 transform.rotation = Quaternion.Lerp(transform.rotation, CurrentWaypoint.Waypoint.rotation, Time.deltaTime);
             }
@@ -91,6 +110,24 @@ namespace Assets.Scripts.Task6
                 transform.position = Vector3.Lerp(transform.position, DefaultWaypoint.transform.position, Time.deltaTime);
                 transform.rotation = Quaternion.Lerp(transform.rotation, DefaultWaypoint.transform.rotation, Time.deltaTime);
             }
+        }
+
+        public void ChangeFollowingObject(GameObject followTo, bool allowZoom = false)
+        {
+            if (followTo != null)
+                DefaultWaypoint = followTo;
+
+            canZoom = allowZoom;
+        }
+
+        public void FollowDefault(GameObject followTo)
+        {
+            ClearWaypointData();
+            //if (followTo != null)
+            //{
+            //    DefaultWaypoint = followTo;
+            //    canZoom = true;
+            //}
         }
     }
 }

@@ -1,27 +1,29 @@
-﻿using Assets.Scripts.Task6;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ChangeCameraWaypoint : MonoBehaviour
+namespace Task6
 {
-    private CameraMover cam;
-    public bool thisOnStart;
-    public GameObject waypointToChange;
-
-    void Start()
+    public class ChangeCameraWaypoint : MonoBehaviour
     {
-        cam = FindObjectOfType<CameraMover>();
+        private CameraMover cam;
+        public bool ThisOnStart;
+        public GameObject WaypointToChange;
 
-        if(thisOnStart)
-            cam.ChangeFollowingObject(this.gameObject);
-    }
+        void Start()
+        {
+            cam = FindObjectOfType<CameraMover>();
 
-    public void ChangeWaypoint()
-    {
-        cam.ChangeFollowingObject(waypointToChange, true);
-    }
+            if(ThisOnStart)
+                cam.ChangeFollowingObject(this.gameObject);
+        }
 
-    public void ChangeWaypoint(GameObject waypoint)
-    {
-        cam.ChangeFollowingObject(waypoint);
+        public void ChangeWaypoint()
+        {
+            cam.ChangeFollowingObject(WaypointToChange, true);
+        }
+
+        public void ChangeWaypoint(GameObject waypoint)
+        {
+            cam.ChangeFollowingObject(waypoint);
+        }
     }
 }

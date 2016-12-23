@@ -1,63 +1,61 @@
 ﻿using UnityEngine;
 
-public class SatelliteWatcher : MonoBehaviour
+namespace Task6
 {
-    public Transform defaultLookAt;
-    public Transform lookAt;
-
-    public Transform defaultInitPosition;
-    public Transform initPosition;
-
-    public float speed = 0.25f;
-    public float minDistance;
-    public float maxDistance;
-
-    void Start()
+    public class SatelliteWatcher : MonoBehaviour
     {
+        public Transform DefaultLookAt;
+        public Transform LookAt;
 
-    }
+        public Transform DefaultInitPosition;
+        public Transform InitPosition;
 
-    void Update()
-    {
-        Move();
-    }
+        public float Speed = 0.25f;
+        public float MinDistance;
+        public float MaxDistance;
 
-    //  Runs in Update method
-    private void Move()
-    {
-        transform.LookAt(defaultLookAt.position);
-    }
-
-    public void ZoomIn(float transition, bool onPlanet = false)
-    {
-        if(!onPlanet && transition > 0.05f)
+        void Update()
         {
-            transform.position = Vector3.Lerp(defaultLookAt.position, defaultInitPosition.position, transition);
+            Move();
+        }
+
+        //  Runs in Update method
+        private void Move()
+        {
+            transform.LookAt(DefaultLookAt.position);
+        }
+
+        public void ZoomIn(float transition, bool onPlanet = false)
+        {
+            if (!onPlanet && transition > 0.05f)
+            {
+                transform.position = Vector3.Lerp(DefaultLookAt.position, DefaultInitPosition.position, transition);
+            }
+        }
+
+        public void FollowTo(GameObject lookAt, GameObject initPosition)
+        {
+            this.LookAt = lookAt.transform;
+            this.InitPosition = initPosition.transform;
+        }
+
+        public void ClearLookAtAndInitPosition()
+        {
+            this.LookAt = null;
+            this.InitPosition = null;
         }
     }
 
-    public void FollowTo(GameObject lookAt, GameObject initPosition)
+    public enum Planet
     {
-        this.lookAt = lookAt.transform;
-        this.initPosition = initPosition.transform;
+        Mercury = 1,
+        Venus = 2,
+        Earth,
+        Mars,
+        Jupiter,
+        Saturn,
+        Uran,
+        Neptune,
+        Pluto
     }
-
-    public void ClearLookAtAndInitPosition()
-    {
-        this.lookAt = null;
-        this.initPosition = null;
-    }
-}
-
-public enum Planet
-{
-    Mercury = 1,
-    Venus =2,
-    Earth,
-    Mars,
-    Jupiter,
-    Saturn,
-    Uran,
-    Neptune,
-    Pluto
 }

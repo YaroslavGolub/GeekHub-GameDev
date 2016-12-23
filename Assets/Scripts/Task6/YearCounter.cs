@@ -1,18 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class YearCounter : MonoBehaviour {
+namespace Task6
+{
+    public class YearCounter : MonoBehaviour {
 
-	int _year = 0;
+        private int _year = 0;
 
-	public void CountYear()
-	{
-		_year++;
-	}
+        public int Year
+        {
+            get { return _year; }
+            set { _year = value; }
+        }
 
-	public int GetCurrentYear()
-	{
-		return _year;
-	}
+        public void CountYear()
+        {
+            _year++;
+        }
+    }
 }

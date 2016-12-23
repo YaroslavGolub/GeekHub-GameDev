@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Task6
+namespace Task6
 {
     public class PlanetSatellite : MonoBehaviour
     {
@@ -39,7 +39,7 @@ namespace Assets.Scripts.Task6
         {
             _nameText.text = "Name : " + gameObject.name;
             _dayText.text = "Days : " + _day;
-            _yearText.text = "Year : " + TheYearCounter.GetCurrentYear();
+            _yearText.text = "Year : " + TheYearCounter.Year;
         }
 
         public void CountDay()

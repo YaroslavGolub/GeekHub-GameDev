@@ -1,64 +1,42 @@
-﻿using UnityEngine.UI;
-using UnityEngine;
-using Assets.Scripts.Task6;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
-public class PlanetContainer : MonoBehaviour
-{ 
-    private Text planetName;
-    private Button btn;
+namespace Task6
+{
+    public class PlanetContainer : MonoBehaviour
+    { 
+        private Text _planetName;
+        private Button _btn;
 
-    public Planet planet;
-    private PlanetSatellite satellite;
+        public Planet ThePlanet;
+        private PlanetSatellite _satellite;
 
-    private void Awake()
-    {
-        Initialize();
-    }
-    // Use this for initialization
-    void Start()
-    {
-        //planetName = this.gameObject.GetComponentInChildren<Text>();
-        //btn = this.gameObject.GetComponentInChildren<Button>();
-        //planetName.text = satellite.name;
-        //btn.onClick.AddListener(OnBtnClick);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void OnBtnClick()
-    {
-        FindObjectOfType<CameraMover>().ChangeCurrentWaypoint(satellite);
-
-    }
-
-    private void Initialize()
-    {
-        PlanetSatellite[] satellites = FindObjectsOfType<PlanetSatellite>();
-        for (int i = 0; i < satellites.Length; i++)
+        private void Awake()
         {
-            if(satellites[i].name == planet.ToString())
-            {
-                satellite = satellites[i];
-                break;
-            }
+            Initialize();
+        }
+        
+        public void OnBtnClick()
+        {
+            FindObjectOfType<CameraMover>().ChangeCurrentWaypoint(_satellite);
         }
 
-        planetName = this.gameObject.GetComponentInChildren<Text>();
-        btn = this.gameObject.GetComponentInChildren<Button>();
-        planetName.text = satellite.name;
-        btn.onClick.AddListener(OnBtnClick);
-        //foreach(var t in satellites)
-        //{
-        //    if(t.name == planet.ToString())
-        //    {
-        //        satellite = t;
-        //    }
+        private void Initialize()
+        {
+            PlanetSatellite[] satellites = FindObjectsOfType<PlanetSatellite>();
+            for (int i = 0; i < satellites.Length; i++)
+            {
+                if(satellites[i].name == ThePlanet.ToString())
+                {
+                    _satellite = satellites[i];
+                    break;
+                }
+            }
 
-        //    Debug.Log(t.name);
-        //}
+            _planetName = this.gameObject.GetComponentInChildren<Text>();
+            _btn = this.gameObject.GetComponentInChildren<Button>();
+            _planetName.text = _satellite.name;
+            _btn.onClick.AddListener(OnBtnClick);
+        }
     }
 }

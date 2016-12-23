@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Task6
+namespace Task6
 {
     public class CameraMover : MonoBehaviour
     {
@@ -14,20 +14,18 @@ namespace Assets.Scripts.Task6
         public LayerMask LMask;
 
         public GameObject InfoPanel;
-        public GameObject orbits;
+        public GameObject Orbits;
 
-        public float zoomValue;
         public Scrollbar ThScrollbar;
 
-        private bool canZoom;
+        private bool _canZoom;
         private bool _defaultPos = true;
-        private Vector3 pos;
 
         private void Start()
         {
             InfoPanel.SetActive(false);
             ThScrollbar.transform.parent.gameObject.SetActive(false);
-            orbits.SetActive(true);
+            Orbits.SetActive(true);
         }
 
         private GameObject GetClickedGameObject()
@@ -67,10 +65,10 @@ namespace Assets.Scripts.Task6
 
             _defaultPos = CurrentWaypoint == null;
 
-            if (canZoom)
+            if (_canZoom)
             {
                 ThScrollbar.transform.parent.gameObject.SetActive(!InfoPanel.activeInHierarchy);
-                orbits.SetActive(!InfoPanel.activeInHierarchy);
+                Orbits.SetActive(!InfoPanel.activeInHierarchy);
                 StWatcher.ZoomIn(ThScrollbar.value);
             }
 
@@ -117,17 +115,12 @@ namespace Assets.Scripts.Task6
             if (followTo != null)
                 DefaultWaypoint = followTo;
 
-            canZoom = allowZoom;
+            _canZoom = allowZoom;
         }
 
         public void FollowDefault(GameObject followTo)
         {
             ClearWaypointData();
-            //if (followTo != null)
-            //{
-            //    DefaultWaypoint = followTo;
-            //    canZoom = true;
-            //}
         }
     }
 }

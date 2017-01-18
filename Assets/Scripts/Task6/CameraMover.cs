@@ -122,5 +122,11 @@ namespace Task6
         {
             ClearWaypointData();
         }
+
+        public void TogleActiveStateOfGameobject(GameObject go)
+        {
+            if(go!=null)
+                go.SetActive(!go.activeInHierarchy);
+        }
     }
 }

@@ -43,7 +43,7 @@ namespace Task6
         {
             this.LookAt = null;
             this.InitPosition = null;
-        }
+        }        
     }
 
     public enum Planet

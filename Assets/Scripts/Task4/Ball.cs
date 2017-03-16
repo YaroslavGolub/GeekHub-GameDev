@@ -16,11 +16,20 @@ public class Ball : MonoBehaviour
     public float forceToAdd;
     public Text forceText;
 
+    [SerializeField]
+    private int maxForceToAdd = 60;
+
+    private bool flagUp;
+
+    [SerializeField]
+    private float forceIncremental = 35;
+
     private void Start()
     {
         gMan = FindObjectOfType<GameManager>();
         rbody = GetComponent<Rigidbody>();
         rbody.useGravity = false;
+        flagUp = true;
         startPosition = transform.position;
     }
 
@@ -34,8 +43,30 @@ public class Ball : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            forceToAdd += 1;
-            forceText.text = "Force : " + forceToAdd;
+            if (flagUp)
+            {
+                forceToAdd += forceIncremental * Time.deltaTime;
+
+                if (forceToAdd > maxForceToAdd)
+                {
+                    forceToAdd = maxForceToAdd;
+                    flagUp = false;
+                }
+            }
+            else
+            {
+                forceToAdd -= forceIncremental * Time.deltaTime;
+
+                if (forceToAdd < 0)
+                {
+                    forceToAdd = 0;
+                    flagUp = true;
+                }
+            }
+
+
+
+            forceText.text = "Force : " + (int)forceToAdd;
 
         }
 
